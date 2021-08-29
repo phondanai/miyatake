@@ -77,14 +77,13 @@
      [:> rs/Legend]
      [:> rs/Tooltip]
      (for [province @selected]
+       ^{:key province}
        [:> rs/Line {:type "monotone"
                     :dataKey province
                     :stroke (str "#" (miyatake-data/color-list province))}])]])
 
 
 (defn home-page []
-  (when (= 0 (count @raw-data))
-    [:h1 "Retreiving data"])
   [:div
    [:h1 "Thailand COVID-19 new cases by province"]
    [:p "Data fetch from " [:a {:href "https://covid19.ddc.moph.go.th/"} "Department of Disease Control."]]
